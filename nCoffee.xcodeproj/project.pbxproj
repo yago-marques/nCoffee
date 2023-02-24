@@ -135,6 +135,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		DF75DB0929A9865400654AC0 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				DF8F979B299B00D900AD3A5C /* ViewCoding.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		DF83D934299C49920061C650 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
@@ -175,7 +183,7 @@
 		DF8F979A299B00BE00AD3A5C /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				DF8F979B299B00D900AD3A5C /* ViewCoding.swift */,
+				DF75DB0929A9865400654AC0 /* Protocols */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
