@@ -10,6 +10,12 @@ import UIKit
 
 enum CoffeeTableFactory {
     static func make() -> UIViewController {
-        CoffeeTableViewController(coffeeService: RemoteCoffeeLoader())
+        CoffeeTableViewController(
+            presenter: CoffeeListPresenter(
+                coffeeService: RemoteCoffeeLoader(
+                    apiClient: URLSessionHTTPClient(session: URLSession.shared)
+                )
+            )
+        )
     }
 }

@@ -63,11 +63,11 @@ final class CoffeeInfo: UIView {
     @available(*, unavailable)
     required init?(coder: NSCoder) { nil }
 
-    func setupView(viewModel: Coffee) {
+    func setupView(viewModel: CoffeeViewModel) {
         self.coffeeTitle.text = viewModel.name
-        self.coffeeSubtitle.text = "\(viewModel.type) | \(viewModel.quantity) | \(viewModel.price.formatted(.currency(code: "BRL")))"
+        self.coffeeSubtitle.text = "\(viewModel.type) | \(viewModel.quantity) | \(viewModel.price)"
         self.coffeeRating.text = "\(viewModel.rating) ⭐️"
-        self.coffeeAddress.text = "🚕  \(viewModel.address)"
+        self.coffeeAddress.text = "🚕  \(viewModel.place)"
         self.coffeeDescription.text = viewModel.description
     }
 

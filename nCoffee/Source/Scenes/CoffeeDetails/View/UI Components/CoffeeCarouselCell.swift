@@ -30,8 +30,8 @@ final class CoffeeCarouselCell: UICollectionViewCell {
     @available(*, unavailable)
     required init?(coder: NSCoder) { nil }
 
-    func configureCell(_ imageName: String) {
-        coffeeBanner.image = UIImage(named: imageName)
+    func configureCell(_ imageData: Data) {
+        coffeeBanner.image = UIImage(data: imageData)
     }
 
 }

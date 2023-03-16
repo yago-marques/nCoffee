@@ -48,10 +48,10 @@ final class CoffeeDetailsView: UIView {
     @available(*, unavailable)
     required init?(coder: NSCoder) { nil }
 
-    func configureView(_ viewModel: Coffee) {
-        self.imageCarousel.imageList = viewModel.carouselImages
+    func configureView(_ viewModel: CoffeeViewModel) {
+        self.imageCarousel.imageList = viewModel.banners
         self.coffeeInfo.setupView(viewModel: viewModel)
-        self.url = viewModel.mapsUrl
+        self.url = viewModel.url
     }
 
 }

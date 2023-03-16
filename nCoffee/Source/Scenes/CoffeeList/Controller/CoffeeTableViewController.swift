@@ -7,10 +7,10 @@
 
 import UIKit
 
-class CoffeeTableViewController: UITableViewController {
+final class CoffeeTableViewController: UITableViewController {
 
-    let coffeeService: CoffeeClient
-    var filteredCafes = [Coffee]() {
+    
+    var filteredCafes = [CoffeeViewModel]() {
         didSet {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -18,8 +18,9 @@ class CoffeeTableViewController: UITableViewController {
         }
     }
 
-    var allCafes = [Coffee]()
+    var allCafes = [CoffeeViewModel]()
 
+    let presenter: CoffeeListPresenter
 
     private lazy var filterSegmentedControl: UISegmentedControl = {
         let control = UISegmentedControl(items: ["Todos", "Arabica", "Expresso", "Gourmet"])
@@ -30,8 +31,16 @@ class CoffeeTableViewController: UITableViewController {
         return control
     }()
 
-    init(coffeeService: CoffeeClient) {
-        self.coffeeService = coffeeService
+    var image: UIImageView = {
+        let image = UIImageView()
+        image.translatesAutoresizingMaskIntoConstraints = false
+        image.contentMode = .scaleAspectFill
+
+        return image
+    }()
+
+    init(presenter: CoffeeListPresenter) {
+        self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -42,10 +51,10 @@ class CoffeeTableViewController: UITableViewController {
         super.viewWillAppear(animated)
         buildLayout()
 
-        coffeeService.getCoffee { result in
-            if case .success(let coffeeGroup) = result {
-                self.filteredCafes = coffeeGroup
-                self.allCafes = coffeeGroup
+        DispatchQueue.main.async {
+            self.presenter.getCoffeeViewModel { cafes in
+                self.allCafes = cafes
+                self.filteredCafes = cafes
             }
         }
     }
@@ -92,6 +101,7 @@ class CoffeeTableViewController: UITableViewController {
 
 extension CoffeeTableViewController: ViewCoding {
     func setupView() {
+        view.backgroundColor = .yellow
         self.tableView.register(CoffeeCustomCell.self, forCellReuseIdentifier: CoffeeCustomCell.identifier)
     }
 

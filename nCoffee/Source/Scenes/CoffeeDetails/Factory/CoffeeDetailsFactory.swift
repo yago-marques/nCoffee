@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 enum CoffeeDetailsFactory {
-    static func make(with coffee: Coffee) -> UIViewController {
+    static func make(with coffee: CoffeeViewModel) -> UIViewController {
         let view = CoffeeDetailsView(frame: UIScreen.main.bounds)
         
         return CoffeeDetailsController(detailsView: view, coffee: coffee)

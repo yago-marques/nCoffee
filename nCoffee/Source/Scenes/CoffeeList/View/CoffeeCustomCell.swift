@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CoffeeCustomCell: UITableViewCell {
+final class CoffeeCustomCell: UITableViewCell {
 
     static let identifier = "CoffeeCustomCell"
 
@@ -55,12 +55,12 @@ class CoffeeCustomCell: UITableViewCell {
     @available(*, unavailable)
     required init?(coder: NSCoder) { nil }
 
-    func configureCell(with coffee: Coffee) {
+    func configureCell(with coffee: CoffeeViewModel) {
         DispatchQueue.main.async {
-            self.coffeeImage.image = UIImage(named: coffee.image)
+            self.coffeeImage.image = UIImage(data: coffee.image)
             self.coffeeTitle.text = coffee.name
             self.coffeeDescription.text = "\(coffee.type) | \(coffee.quantity)"
-            self.coffeePrice.text = "\(coffee.price.formatted(.currency(code: "BRL")))"
+            self.coffeePrice.text = coffee.price
         }
     }
 

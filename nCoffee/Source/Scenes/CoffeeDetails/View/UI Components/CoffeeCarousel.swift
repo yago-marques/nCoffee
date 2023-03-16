@@ -10,7 +10,7 @@ import UIKit
 
 final class CoffeeCarousel: UIView {
 
-    var imageList = [String]() {
+    var imageList = [Data]() {
         didSet {
             self.carouselCollection.reloadData()
             self.pageControl.numberOfPages = imageList.count

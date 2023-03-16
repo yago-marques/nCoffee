@@ -11,9 +11,9 @@ import UIKit
 final class CoffeeDetailsController: UIViewController {
 
     let detailsView: CoffeeDetailsView
-    let coffee: Coffee
+    let coffee: CoffeeViewModel
 
-    init(detailsView: CoffeeDetailsView, coffee: Coffee) {
+    init(detailsView: CoffeeDetailsView, coffee: CoffeeViewModel) {
         self.detailsView = detailsView
         self.coffee = coffee
         super.init(nibName: nil, bundle: nil)
@@ -23,12 +23,6 @@ final class CoffeeDetailsController: UIViewController {
         super.viewDidLoad()
 
         setupView()
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-
     }
 
     @available(*, unavailable)
