@@ -101,7 +101,6 @@ final class CoffeeTableViewController: UITableViewController {
 
 extension CoffeeTableViewController: ViewCoding {
     func setupView() {
-        view.backgroundColor = .yellow
         self.tableView.register(CoffeeCustomCell.self, forCellReuseIdentifier: CoffeeCustomCell.identifier)
     }
 
